@@ -1,42 +1,38 @@
 
-<h1 align="center">DGG-HMR <br> (Accepted by ICML 2026)</h1>
+<h1 align="center">
+  DGG-HMR: Multi-Person Human Mesh Recovery with Depth-Guided<br>
+  Geometric Anchoring
+</h1>
 
-<h4 align="center" style="text-decoration: none;">
-  <b>DGG-HMR Authors</b>
-</h4>
+<h2 align="center">ICML 2026</h2>
+
+<p align="center">
+  <b>Yanjie Li</b><sup>1</sup> &nbsp;
+  <b>Le Hui</b><sup>2,3</sup> &nbsp;
+  <b>Yali Peng</b><sup>1</sup> &nbsp;
+  <b>Shigang Liu</b><sup>1,&dagger;</sup>
+</p>
 
 <div align="center">
   <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
   <img alt="ICML 2026" src="https://img.shields.io/badge/ICML-2026-00369f">
 </div>
 
-
-<div align="center">
-  <img src="figures/results.png" width="70%">
-  <img src="figures/results_3d.gif" width="29%">
-</div>
-
-<h3> Overview of DGG-HMR </h3>
+<br>
 
 <p align="center">
-  <img src="figures/pipeline.png"/>
+  <img src="assets/teaser.png" width="95%">
 </p>
 
-<!-- <p align="center">
-  <img src="figures/pipeline.png" style="height: 300px; object-fit: cover;"/>
-</p> -->
+## Overview
+
+<p align="center">
+  <img src="assets/pipeline.png" width="95%">
+</p>
 
 ## News :triangular_flag_on_post:
 
-[2026/06/20] DGG-HMR has been accepted to ICML 2026.
-
-[2026/06/20] Code for inference, training, and evaluation is being prepared for release.
-
-
-## TODO :white_check_mark:
-
-- [x] Provide inference code, support image folder input
-- [x] Provide code and data for training or evaluation
+[2026/05/01] DGG-HMR has been accepted to ICML 2026.
 
 ## Installation
 
