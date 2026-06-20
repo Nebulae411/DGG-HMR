@@ -1,8 +1,6 @@
 # Data Preparation
 
-DGG-HMR follows the same data preparation protocol as [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) for the shared datasets, except that Human3.6M is not used in this codebase. Please download the original datasets from their official websites and prepare the preprocessed annotation files according to the licenses of each dataset.
-
-This repository does not redistribute dataset images or preprocessed annotations.
+DGG-HMR follows the [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) data preparation protocol for the shared datasets, except that Human3.6M is not used. We do not redistribute dataset images or preprocessed annotations.
 
 ## Dataset Root
 
@@ -10,10 +8,10 @@ Place all datasets under `${Project}/data` by default. You can change the datase
 
 ## Training Datasets
 
-The default training config uses AGORA, BEDLAM, COCO, MPII, and CrowdPose:
+The default training config uses AGORA, BEDLAM 1fps, COCO, MPII, and CrowdPose:
 
 - [AGORA](https://agora.is.tue.mpg.de/index.html): use the 1280x720 images.
-- [BEDLAM](https://bedlam.is.tue.mpg.de/index.html): use the released image data; the default config uses the `train_1fps` annotation file.
+- [BEDLAM](https://bedlam.is.tue.mpg.de/index.html): the default config uses `bedlam_smpl_train_1fps.npz`; use the 6fps annotation file if computational resources are sufficient.
 - [COCO](https://cocodataset.org/#home): use the 2017 train images.
 - [MPII](https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/software-and-datasets/mpii-human-pose-dataset): prepare the images following the official dataset structure.
 - [CrowdPose](https://github.com/Jeff-sjtu/CrowdPose): prepare the images following the official dataset structure.

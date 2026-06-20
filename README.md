@@ -118,48 +118,22 @@ ${Project}
 
 ## Data Preparation
 
-Please see [docs/data_preparation.md](docs/data_preparation.md) for detailed instructions.
+DGG-HMR follows the [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) data preparation protocol for the shared datasets, except that Human3.6M is not used. We do not redistribute dataset images or preprocessed annotations.
 
-DGG-HMR follows the [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) data preparation protocol for the shared datasets, except that Human3.6M is not used. This repository does not redistribute dataset images or preprocessed annotations. Please download the original datasets from their official sources and prepare the annotation files according to their licenses.
-
-All datasets should be placed under `${Project}/data` by default. You can change this root in `${Project}/configs/paths.py`. The prepared data should follow this structure:
-
+Place datasets under `${Project}/data` by default, or change the root in `${Project}/configs/paths.py`. See [docs/data_preparation.md](docs/data_preparation.md) for the full expected structure. In short:
 ```
-${Project}
-|-- data
-    |-- agora
-        |-- train / validation / test
-        `-- smpl_neutral_annots
-            |-- annots_smpl_train_fit.npz
-            |-- annots_smpl_validation.npz
-            `-- annots_smpl_test.npz
-    |-- 3dpw
-        |-- imageFiles
-        |-- annots_smpl_train_genders.npz
-        `-- annots_smpl_test_genders.npz
-    |-- mupots
-        `-- MultiPersonTestSet
-            |-- TS1
-            |   |-- annot.mat
-            |   |-- occlusion.mat
-            |   `-- img_000000.jpg
-            |-- ...
-            `-- TS20
-    |-- cmu
-        `-- processed
-            `-- annotations
-                `-- *.pkl
-    |-- bedlam
-        `-- bedlam_smpl_train_1fps.npz
-    |-- coco
-        `-- COCO_small_NA_SMPL.npz
-    |-- mpii
-        `-- MPII_NA_SMPL.npz
-    `-- crowdpose
-        `-- CP_NA_SMPL_train.npz
+data/
+|-- agora/       # train, validation, test, and SMPL annotations
+|-- bedlam/      # default training uses bedlam_smpl_train_1fps.npz
+|-- coco/
+|-- mpii/
+|-- crowdpose/
+|-- 3dpw/
+|-- mupots/
+`-- cmu/
 ```
 
-For MuPoTS-3D and CMU Panoptic evaluation, please download the official datasets and prepare them according to the official instructions. DGG-HMR reads the official MuPoTS `MultiPersonTestSet` layout and ROMP-style processed CMU Panoptic annotations.
+For MuPoTS-3D and CMU Panoptic evaluation, download the official datasets and follow their official preparation instructions.
 
 ## Inference on Images
 <h4> Inference with 1 GPU</h4>
@@ -210,7 +184,7 @@ To train on all datasets, run:
 accelerate launch main.py --mode train --cfg train_all
 ```
 
-**Note**: Training on [AGORA](https://agora.is.tue.mpg.de/index.html) and [BEDLAM](https://bedlam.is.tue.mpg.de/index.html) datasets is sufficient to reproduce our results on the [AGORA Leaderboard](https://agora-evaluation.is.tuebingen.mpg.de/). If you wish to save time and not train on all datasets, you can modify `L39-40` in the `${Project}/run/train_all.yaml` config file.
+The default training config uses AGORA, BEDLAM 1fps, COCO, MPII, and CrowdPose. If computational resources are sufficient, BEDLAM 6fps can also be used by changing the BEDLAM split in `configs/run/train_all.yaml`.
 
 <h4> Monitor Training Progress</h4>
 
