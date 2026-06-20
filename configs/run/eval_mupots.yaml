@@ -7,7 +7,7 @@ eval_datasets_used: ['mupots']
 eval_datasets_split: ['test']
 
 eval_vis_num: 20
-conf_thresh: [0.1, 0.2, 0.3]
+conf_thresh: [0.2]
 eval_batch_size: 8
 eval_num_workers: 12
 distributed_eval: True

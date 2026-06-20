@@ -20,10 +20,6 @@ lr_scheduler: 'cosine'
 aux_loss: True
 
 
-#losses: ['confs','poses','betas','boxes','j3ds','j2ds','depths']
-#weight_dict: {'confs':4.,'poses':5.,'betas':3.,'boxes':2., 'giou':2., 'j3ds':8.,'j2ds':40.,'depths':0.5} 
-#detach_j3ds: False
-
 losses: ['confs','poses','betas','boxes','j3ds','j2ds','depths','bbox_prior_boxes','bbox_prior_conf','depth_tz']  # bbox_prior and depth-prior Tz losses are opt-in via this list
 weight_dict: {
   'confs':4.0,
@@ -59,8 +55,6 @@ aug_cfg:
 train_datasets_used: ['agora','bedlam','coco','mpii','crowdpose']      # ['agora','bedlam','bedlam']
 train_datasets_split: ['train','train_1fps','train','train','train']  # ['train','train_6fps','validation_6fps']
 
-#train_datasets_used: ['agora','bedlam','bedlam','coco','mpii','crowdpose']      # ['agora','bedlam','bedlam']
-#train_datasets_split: ['train','train_1fps','validation_6fps','train','train','train']  # ['train','train_6fps','validation_6fps']
 train_batch_size: 6
 train_num_workers: 12
 

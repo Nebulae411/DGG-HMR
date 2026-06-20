@@ -1,5 +1,3 @@
-
-
 #bbox+roi-stage1/2
 
 # Modified from DAB-DETR (https://github.com/IDEA-Research/DAB-DETR)

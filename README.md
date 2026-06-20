@@ -35,31 +35,41 @@
 
 ## Installation
 
-We tested with python 3.11, PyTorch 2.4.1 and CUDA 12.1.
+We tested DGG-HMR with the following environment:
+
+| Package | Version |
+| --- | --- |
+| Python | 3.11.14 |
+| CUDA | 12.1 |
+| PyTorch | 2.4.1+cu121 |
+| TorchVision | 0.19.1+cu121 |
+| TorchAudio | 2.4.1+cu121 |
+| xFormers | 0.0.28.post1 |
+| Accelerate | 1.10.0 |
 
 1. Clone the repo and create a conda environment.
 ```bash
-git clone <DGG-HMR_REPOSITORY_URL>
+git clone https://github.com/Nebulae411/DGG-HMR.git
 cd DGG-HMR
 conda create -n dgg-hmr python=3.11 -y
 conda activate dgg-hmr
 ```
 
-2. Install [PyTorch](https://pytorch.org/) and [xFormers](https://github.com/facebookresearch/xformers).
+2. Install [PyTorch](https://pytorch.org/) and [xFormers](https://github.com/facebookresearch/xformers). Please adapt the CUDA version to your local system if needed.
 ```bash
-# Install PyTorch. It is recommended that you follow [official instruction](https://pytorch.org/) and adapt the cuda version to yours.
 conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.1 -c pytorch -c nvidia
 
-# Install xFormers. It is recommended that you follow [official instruction](https://github.com/facebookresearch/xformers) and adapt the cuda version to yours.
-pip install -U xformers==0.0.28.post1  --index-url https://download.pytorch.org/whl/cu121
+pip install -U xformers==0.0.28.post1 --index-url https://download.pytorch.org/whl/cu121
 ```
 
-3. Install other dependencies.
+3. Install the remaining Python dependencies.
 ```bash
 pip install -r requirements.txt
 ```
 
-4. You may need to modify `chumpy` package to avoid errors. For detailed instructions, please check [this guidance](docs/fix_chumpy.md).
+4. You may need to patch `chumpy` for Python 3.11 compatibility. Please follow [this guidance](docs/fix_chumpy.md) if you encounter `chumpy` import errors.
+
+5. Prepare external code and model assets as described below. In particular, DGG-HMR imports the local `Depth-Anything-V2` source tree at runtime, so cloning Depth-Anything-V2 is required even though it is not vendored in this repository.
 
 ## External Code, Models, and Weights
 
@@ -108,9 +118,11 @@ ${Project}
 
 ## Data Preparation
 
-All datasets should be placed under `${Project}/data` by default. You can change this root in `${Project}/configs/paths.py`.
+Please see [docs/data_preparation.md](docs/data_preparation.md) for detailed instructions.
 
-For inference on custom images, no dataset preparation is required. For evaluation or training, prepare the datasets and preprocessed annotations required by the corresponding config:
+DGG-HMR follows the SAT-HMR data preparation protocol for the shared datasets, except that Human3.6M is not used. This repository does not redistribute dataset images or preprocessed annotations. Please download the original datasets from their official sources and prepare the annotation files according to their licenses.
+
+All datasets should be placed under `${Project}/data` by default. You can change this root in `${Project}/configs/paths.py`. The prepared data should follow this structure:
 
 ```
 ${Project}
@@ -122,11 +134,15 @@ ${Project}
             |-- annots_smpl_validation.npz
             `-- annots_smpl_test.npz
     |-- 3dpw
+        |-- imageFiles
         |-- annots_smpl_train_genders.npz
         `-- annots_smpl_test_genders.npz
     |-- mupots
         `-- MultiPersonTestSet
             |-- TS1
+            |   |-- annot.mat
+            |   |-- occlusion.mat
+            |   `-- img_000000.jpg
             |-- ...
             `-- TS20
     |-- cmu
@@ -143,7 +159,7 @@ ${Project}
         `-- CP_NA_SMPL_train.npz
 ```
 
-The repository does not redistribute dataset images or annotation files. Please prepare them from the original datasets and preprocessing pipelines allowed by their licenses.
+For MuPoTS-3D and CMU Panoptic evaluation, please download the official datasets and prepare them according to the official instructions. DGG-HMR reads the official MuPoTS `MultiPersonTestSet` layout and ROMP-style processed CMU Panoptic annotations.
 
 ## Inference on Images
 <h4> Inference with 1 GPU</h4>
