@@ -1,0 +1,11 @@
+model: default
+
+pretrain: True
+pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+
+input_dir: './demo/images'
+output_dir: './demo_results/images'
+conf_thresh: [0.3]
+infer_batch_size: 1
+infer_num_workers: 8
+distributed_infer: True

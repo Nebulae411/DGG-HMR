@@ -1,0 +1,36 @@
+input_size: 896
+encoder: 'vitb'
+
+# decoder
+hidden_dim: 768
+nheads: 4
+dec_layers: 6
+dim_feedforward: 2048
+dropout: 0.0
+num_queries: 50
+transformer_activation: "relu"
+
+dn_cfg:
+  use_dn: True
+  dn_number: 10
+  tgt_embed_type: "params"
+  box_noise_scale: 0.4
+  tgt_noise_scale: 0.2
+
+
+use_dav2_depth: True
+dav2_encoder: 'vitb'
+dav2_frozen: True
+
+# Bbox-only prior DETR branch (HMR encoder-based)
+use_bbox_prior: True          # Whether to enable bbox-only prior branch
+bbox_prior_decoder_layers: 3  # Number of decoder layers for bbox prior branch
+bbox_prior_hidden_dim: 256    # Hidden dimension for bbox prior decoder
+bbox_prior_dim_feedforward: 1024  # Feedforward dimension for bbox prior decoder
+
+# Depth-only Tz decoder (DAV2 + bbox prior)
+depth_only_tz_decoder: True
+depth_only_decoder_layers: 2
+depth_only_nheads: 4
+depth_only_dim_feedforward: 1024
+depth_tz_hidden_dim: 256

@@ -1,0 +1,64 @@
+seed: 42
+model: default
+
+pretrain: True
+pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+resume: True # Resume from the latest ckpt
+
+num_epochs: 10
+save_and_eval_epoch: 1
+least_eval_epoch: 0
+# lr
+lr: 5.0e-6
+lr_encoder_names: ["encoder"]
+lr_encoder: 2.5e-6
+# optimizer AdamW
+optimizer: 'adamw'
+weight_decay: 0.0001
+num_warmup_steps: 100
+lr_scheduler: 'cosine'
+aux_loss: True
+
+losses: ['confs','poses','betas','boxes','j3ds','j2ds','depths','bbox_prior_boxes','bbox_prior_conf','depth_tz']  # bbox_prior and depth-prior Tz losses are opt-in via this list
+weight_dict: {
+  'confs':4.0,
+  'poses':5.0,
+  'betas':3.0,
+  'boxes':2.0,
+  'giou':2.0,
+  'j3ds':8.0,
+  'j2ds':40.0,
+  'depths':1.0,
+  # bbox-only prior DETR loss weights (used only if added to losses)
+  'bbox_prior_boxes':0.5,
+  'bbox_prior_giou':0.5,
+  'bbox_prior_conf':1.0,
+  # Depth-prior Tz loss weight (used only if added to losses)
+  'depth_tz':4.0,
+}
+detach_j3ds: False
+
+# matcher
+set_cost_conf: 1
+set_cost_bbox: 1
+set_cost_giou: 1
+set_cost_kpts: 20
+
+# train aug
+aug_cfg:
+  rot_range: [-15, 15]
+  scale_range: [0.8, 1.8]
+  flip_ratio: 0.5
+
+train_datasets_used: ['agora']      
+train_datasets_split: ['train']  
+train_batch_size: 6
+train_num_workers: 12
+
+eval_datasets_used: ['agora']
+eval_datasets_split: ['validation']
+eval_vis_num: 20
+conf_thresh: [0.5]
+eval_batch_size: 8
+eval_num_workers: 12
+distributed_eval: True

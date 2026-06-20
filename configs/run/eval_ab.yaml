@@ -1,0 +1,12 @@
+model: default
+
+pretrain: True
+pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+
+eval_datasets_used: ['agora']
+eval_datasets_split: ['validation']
+eval_vis_num: 20
+conf_thresh: [0.5]
+eval_batch_size: 16
+eval_num_workers: 12
+distributed_eval: True
