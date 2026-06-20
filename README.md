@@ -250,4 +250,4 @@ If you find this code useful for your research, please consider citing our paper
 ```
 
 ## Acknowledgement
-This repo is built on the excellent work [DINOv2](https://github.com/facebookresearch/dinov2), [DAB-DETR](https://github.com/IDEA-Research/DAB-DETR), [DINO](https://github.com/IDEA-Research/DINO) and [🤗 Accelerate](https://huggingface.co/docs/accelerate/index). Thanks for these great projects.
+This repository is primarily built upon [SAT-HMR](https://github.com/ChiSu001/SAT-HMR). We sincerely thank the SAT-HMR authors for releasing their codebase. We also thank the excellent projects [DINOv2](https://github.com/facebookresearch/dinov2), [DAB-DETR](https://github.com/IDEA-Research/DAB-DETR), [Depth-Anything-V2](https://github.com/DepthAnything/Depth-Anything-V2), and [Accelerate](https://huggingface.co/docs/accelerate/index).
