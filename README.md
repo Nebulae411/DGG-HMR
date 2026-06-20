@@ -228,7 +228,7 @@ AGORA validation reports detection and mesh metrics plus depth-related metrics. 
 
 <h4> Evaluation with Multiple GPUs</h4>
 
-We recommend using a single GPU for evaluation as it provides more accurate results. However, we also provide code for distributed evaluation to obtain results faster.
+Distributed evaluation is also supported with `accelerate`.
 
 ```bash
 # Multi-GPU configuration
@@ -241,11 +241,13 @@ accelerate launch main.py --mode eval --cfg ${cfg_name}
 
 If you find this code useful for your research, please consider citing our paper:
 ```bibtex
-@InProceedings{DGGHMR_2026_ICML,
-    author    = {DGG-HMR Authors},
-    title     = {DGG-HMR},
-    booktitle = {Proceedings of the International Conference on Machine Learning (ICML)},
-    year      = {2026}
+@inproceedings{
+anonymous2026dgghmr,
+title={{DGG}-{HMR}: Multi-Person Human Mesh Recovery with Depth-Guided Geometric Anchoring},
+author={Yanjie Li and Le Hui and Yali Peng and Shigang Liu},
+booktitle={Forty-third International Conference on Machine Learning},
+year={2026},
+url={https://openreview.net/forum?id=mJr1VDMOf2}
 }
 ```
 
