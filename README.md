@@ -62,12 +62,17 @@ conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=
 pip install -U xformers==0.0.28.post1 --index-url https://download.pytorch.org/whl/cu121
 ```
 
+If the conda solver is slow, you can install PyTorch with pip instead:
+```bash
+pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 torchaudio==2.4.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+```
+
 3. Install the remaining Python dependencies.
 ```bash
 pip install -r requirements.txt
 ```
 
-4. You may need to patch `chumpy` for Python 3.11 compatibility. Please follow [this guidance](docs/fix_chumpy.md) if you encounter `chumpy` import errors.
+4. Patch `chumpy` for Python 3.11 compatibility following [this guidance](docs/fix_chumpy.md).
 
 5. Prepare external code and model assets as described below. In particular, DGG-HMR imports the local `Depth-Anything-V2` source tree at runtime, so cloning Depth-Anything-V2 is required even though it is not vendored in this repository.
 
@@ -88,9 +93,9 @@ git clone https://github.com/DepthAnything/Depth-Anything-V2.git Depth-Anything-
 4. Download Depth-Anything-V2 checkpoints from the official Depth-Anything-V2 release. The default model uses the DAV2 ViT-B branch, so put `depth_anything_v2_vitb.pth` under `${Project}/weights/dav2`.
 
 5. Download DGG-HMR checkpoints from [Baidu Netdisk](https://pan.baidu.com/s/1HLo9JkOTG3plxmgUVD80DA?pwd=v45y) and put them under `${Project}/weights/dgg-hmr`.
-   - `dgg_672_vitb.pth`: default checkpoint for demo and AGORA evaluation.
-   - `dgg_672_vitb_3dpw.pth`: checkpoint used by the 3DPW, MuPoTS, and CMU evaluation configs.
-   - The `896` checkpoints are optional unless you explicitly switch configs to them.
+   - `dgg_896_vitb.pth`: default checkpoint for demo and AGORA evaluation.
+   - `dgg_896_vitb_3dpw.pth`: checkpoint used by the 3DPW, MuPoTS, and CMU evaluation configs.
+   - The `672` checkpoints are optional unless you explicitly switch configs to them.
 
 Now the `weights` directory structure should be like this. 
 
@@ -202,8 +207,8 @@ tensorboard --logdir=${Project}/outputs/logs
 
 Evaluation results will be saved in `${Project}/results/${cfg_name}/evaluation`. The default configs use the following checkpoints:
 
-- AGORA: `${Project}/weights/dgg-hmr/dgg_672_vitb.pth`
-- 3DPW, MuPoTS, and CMU: `${Project}/weights/dgg-hmr/dgg_672_vitb_3dpw.pth`
+- AGORA: `${Project}/weights/dgg-hmr/dgg_896_vitb.pth`
+- 3DPW, MuPoTS, and CMU: `${Project}/weights/dgg-hmr/dgg_896_vitb_3dpw.pth`
 
 ```bash
 # Evaluate on AGORA validation

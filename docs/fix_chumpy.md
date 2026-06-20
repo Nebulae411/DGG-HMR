@@ -1,4 +1,4 @@
-You may need to modify `chumpy` package to avoid errors. 
+For Python 3.11, please modify `chumpy` package to avoid import errors. 
    
   * Comment line 11 in `${Your_Conda_Environment}/lib/python3.11/site-packages/chumpy/__init__.py`:
   ```

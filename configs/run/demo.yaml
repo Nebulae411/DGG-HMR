@@ -1,7 +1,7 @@
 model: default
 
 pretrain: True
-pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+pretrain_path: './weights/dgg-hmr/dgg_896_vitb.pth'
 
 input_dir: './demo/images'
 output_dir: './demo_results/images'

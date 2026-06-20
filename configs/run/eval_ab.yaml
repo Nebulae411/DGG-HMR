@@ -1,7 +1,7 @@
 model: default
 
 pretrain: True
-pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+pretrain_path: './weights/dgg-hmr/dgg_896_vitb.pth'
 
 eval_datasets_used: ['agora']
 eval_datasets_split: ['validation']
