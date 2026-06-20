@@ -1,16 +1,15 @@
 
 <h1 align="center">
-  DGG-HMR: Multi-Person Human Mesh Recovery with Depth-Guided<br>
-  Geometric Anchoring
+  DGG-HMR: Multi-Person Human Mesh Recovery with<br>
+  Depth-Guided Geometric Anchoring<br>
+  (ICML 2026)
 </h1>
 
-<h2 align="center">ICML 2026</h2>
-
 <p align="center">
-  <b>Yanjie Li</b><sup>1</sup> &nbsp;
-  <b>Le Hui</b><sup>2,3</sup> &nbsp;
-  <b>Yali Peng</b><sup>1</sup> &nbsp;
-  <b>Shigang Liu</b><sup>1,&dagger;</sup>
+  <b>Yanjie Li</b> &nbsp;
+  <b>Le Hui</b> &nbsp;
+  <b>Yali Peng</b> &nbsp;
+  <b>Shigang Liu*</b>
 </p>
 
 <div align="center">
