@@ -1,7 +1,7 @@
 model: default
 
 pretrain: True
-pretrain_path: './weights/dgg-hmr/dgg_672_vitb.pth'
+pretrain_path: './weights/dgg-hmr/dgg_672_vitb_3dpw.pth'
 
 eval_datasets_used: ['cmu']
 eval_datasets_split: ['test']

@@ -1,6 +1,6 @@
 # Data Preparation
 
-DGG-HMR follows the same data preparation protocol as SAT-HMR for the shared datasets, except that Human3.6M is not used in this codebase. Please download the original datasets from their official websites and prepare the preprocessed annotation files according to the licenses of each dataset.
+DGG-HMR follows the same data preparation protocol as [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) for the shared datasets, except that Human3.6M is not used in this codebase. Please download the original datasets from their official websites and prepare the preprocessed annotation files according to the licenses of each dataset.
 
 This repository does not redistribute dataset images or preprocessed annotations.
 

@@ -87,9 +87,9 @@ git clone https://github.com/DepthAnything/Depth-Anything-V2.git Depth-Anything-
 
 4. Download Depth-Anything-V2 checkpoints from the official Depth-Anything-V2 release. The default model uses the DAV2 ViT-B branch, so put `depth_anything_v2_vitb.pth` under `${Project}/weights/dav2`.
 
-5. Download DGG-HMR checkpoints separately and put them under `${Project}/weights/dgg-hmr`.
-   - `dgg_672_vitb.pth`: default checkpoint for demo, AGORA, MuPoTS, and CMU evaluation.
-   - `dgg_672_vitb_3dpw.pth`: checkpoint used by the 3DPW evaluation config.
+5. Download DGG-HMR checkpoints from [Baidu Netdisk](https://pan.baidu.com/s/1HLo9JkOTG3plxmgUVD80DA?pwd=v45y) and put them under `${Project}/weights/dgg-hmr`.
+   - `dgg_672_vitb.pth`: default checkpoint for demo and AGORA evaluation.
+   - `dgg_672_vitb_3dpw.pth`: checkpoint used by the 3DPW, MuPoTS, and CMU evaluation configs.
    - The `896` checkpoints are optional unless you explicitly switch configs to them.
 
 Now the `weights` directory structure should be like this. 
@@ -120,7 +120,7 @@ ${Project}
 
 Please see [docs/data_preparation.md](docs/data_preparation.md) for detailed instructions.
 
-DGG-HMR follows the SAT-HMR data preparation protocol for the shared datasets, except that Human3.6M is not used. This repository does not redistribute dataset images or preprocessed annotations. Please download the original datasets from their official sources and prepare the annotation files according to their licenses.
+DGG-HMR follows the [SAT-HMR](https://github.com/ChiSu001/SAT-HMR) data preparation protocol for the shared datasets, except that Human3.6M is not used. This repository does not redistribute dataset images or preprocessed annotations. Please download the original datasets from their official sources and prepare the annotation files according to their licenses.
 
 All datasets should be placed under `${Project}/data` by default. You can change this root in `${Project}/configs/paths.py`. The prepared data should follow this structure:
 
@@ -228,8 +228,8 @@ tensorboard --logdir=${Project}/outputs/logs
 
 Evaluation results will be saved in `${Project}/results/${cfg_name}/evaluation`. The default configs use the following checkpoints:
 
-- AGORA, MuPoTS, and CMU: `${Project}/weights/dgg-hmr/dgg_672_vitb.pth`
-- 3DPW: `${Project}/weights/dgg-hmr/dgg_672_vitb_3dpw.pth`
+- AGORA: `${Project}/weights/dgg-hmr/dgg_672_vitb.pth`
+- 3DPW, MuPoTS, and CMU: `${Project}/weights/dgg-hmr/dgg_672_vitb_3dpw.pth`
 
 ```bash
 # Evaluate on AGORA validation
