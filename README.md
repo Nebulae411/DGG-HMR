@@ -247,7 +247,7 @@ accelerate launch main.py --mode eval --cfg ${cfg_name}
 If you find this code useful for your research, please consider citing our paper:
 ```bibtex
 @inproceedings{
-anonymous2026dgghmr,
+li2026dgghmr,
 title={{DGG}-{HMR}: Multi-Person Human Mesh Recovery with Depth-Guided Geometric Anchoring},
 author={Yanjie Li and Le Hui and Yali Peng and Shigang Liu},
 booktitle={Forty-third International Conference on Machine Learning},
